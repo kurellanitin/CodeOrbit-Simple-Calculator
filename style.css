@@ -1,0 +1,325 @@
+
+/* ===================================
+   NOVACALC - CALCULATOR STYLESHEET
+=================================== */
+
+/* 1. Global styles */
+
+:root {
+    --background: #10101c;
+    --calculator-bg: #1b1b2b;
+    --display-bg: #121220;
+    --text: #f5f5ff;
+    --muted: #9696b2;
+    --purple: #8b72ff;
+    --purple-light: #b5a5ff;
+    --button-bg: #29293c;
+    --border: rgba(255, 255, 255, 0.07);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(139, 114, 255, 0.15),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(81, 104, 255, 0.12),
+            transparent 35%
+        ),
+        var(--background);
+}
+
+/* 2. Main page layout */
+
+.page {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 16px;
+}
+
+.page-header {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.brand {
+    color: var(--text);
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    text-decoration: none;
+}
+
+.brand span {
+    color: var(--purple-light);
+}
+
+.page-header p {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* 3. Calculator container */
+
+.calculator {
+    width: 100%;
+    max-width: 370px;
+    padding: 25px;
+    background: var(--calculator-bg);
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.4),
+        0 0 35px rgba(139, 114, 255, 0.06);
+}
+
+/* 4. Calculator heading */
+
+.calculator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.eyebrow {
+    color: var(--purple-light);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.calculator-header h1 {
+    margin-top: 7px;
+    font-size: 24px;
+    letter-spacing: -0.8px;
+}
+
+.calculator-icon {
+    display: grid;
+    place-items: center;
+    width: 45px;
+    height: 45px;
+    color: var(--purple-light);
+    background: rgba(139, 114, 255, 0.13);
+    border: 1px solid rgba(139, 114, 255, 0.2);
+    border-radius: 14px;
+    font-size: 28px;
+}
+
+/* 5. Calculator display */
+
+.display {
+    min-width: 0;
+    min-height: 125px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: var(--display-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.display-label {
+    align-self: flex-start;
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.previous-value {
+    width: 100%;
+    min-height: 25px;
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 14px;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.current-value {
+    max-width: 100%;
+    color: var(--text);
+    font-size: clamp(30px, 8vw, 42px);
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: right;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* 6. Calculator button grid */
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.btn {
+    min-width: 0;
+    min-height: 58px;
+    border: 1px solid transparent;
+    border-radius: 13px;
+    color: var(--text);
+    background: var(--button-bg);
+    font-size: 19px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease,
+        border-color 0.2s ease;
+}
+
+.btn:hover {
+    background: #383850;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn:active {
+    transform: scale(0.94);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--purple-light);
+    outline-offset: 3px;
+}
+
+/* Utility buttons */
+
+.utility {
+    color: var(--purple-light);
+    background: #302b49;
+    font-size: 14px;
+}
+
+.utility:hover {
+    background: #41385f;
+}
+
+/* Operator buttons */
+
+.operator {
+    color: var(--purple-light);
+    background: rgba(139, 114, 255, 0.15);
+    font-size: 24px;
+}
+
+.operator:hover {
+    background: rgba(139, 114, 255, 0.28);
+}
+
+/* Zero button */
+
+.zero {
+    grid-column: span 2;
+}
+
+/* Equals button */
+
+.equals {
+    color: white;
+    background: linear-gradient(135deg, #9b83ff, #7357f6);
+    font-size: 25px;
+    box-shadow: 0 5px 15px rgba(115, 87, 246, 0.2);
+}
+
+.equals:hover {
+    background: linear-gradient(135deg, #ae9bff, #846bff);
+}
+
+/* 7. Calculator footer */
+
+.calculator-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 10px;
+    text-align: center;
+}
+
+.footer-dot {
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    background: #49d6a0;
+    border-radius: 50%;
+}
+
+/* 8. Page footer */
+
+.page-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+    margin-top: 25px;
+    color: var(--muted);
+    font-size: 11px;
+    text-align: center;
+}
+
+/* 9. Mobile responsiveness */
+
+@media (max-width: 400px) {
+    .page {
+        padding: 22px 12px;
+    }
+
+    .calculator {
+        padding: 18px;
+        border-radius: 20px;
+    }
+
+    .btn {
+        min-height: 53px;
+        font-size: 17px;
+    }
+
+    .operator,
+    .equals {
+        font-size: 22px;
+    }
+
+    .display {
+        padding: 16px;
+    }
+}
+
+/* 10. Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
